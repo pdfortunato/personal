@@ -6,6 +6,7 @@ public class ReviewDto {
 
     @NotNull
     private String id;
+    private String author;
     private String comment;
     private int rating;
     @NotNull
@@ -35,5 +36,21 @@ public class ReviewDto {
     }
     public long getProductId() {
         return productId;
+    }
+    public String getAuthor() {
+        return author;
+    }
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setProductId(long productId) {
+        this.productId = productId;
+    }
+    public long getUserId() {
+        return userId;
+    }
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 }
