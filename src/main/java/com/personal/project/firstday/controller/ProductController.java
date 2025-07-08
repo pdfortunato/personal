@@ -1,8 +1,6 @@
 package com.personal.project.firstday.controller;
 
-import com.personal.project.firstday.mapper.ProductMapper;
 import com.personal.project.firstday.model.dto.ProductDto;
-import com.personal.project.firstday.repository.ProductRepository;
 import com.personal.project.firstday.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
@@ -15,13 +13,9 @@ import java.util.List;
 @RequestMapping("/api/products")
 public class ProductController {
 
-    private final ProductRepository productRepository;
-    private  final ProductMapper productMapper;
     private final ProductService productService;
 
-    public ProductController(ProductRepository productRepository, ProductMapper productMapper, ProductService productService) {
-        this.productRepository = productRepository;
-        this.productMapper = productMapper;
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
@@ -36,20 +30,18 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<String> addProduct(@Valid @RequestBody ProductDto productDto) {
-        productRepository.save(productMapper.fromDtoToEntity(productDto));
-        return ResponseEntity.ok().build();
+    public ResponseEntity<ProductDto> addProduct(@Valid @RequestBody ProductDto productDto) {
+        return ResponseEntity.ok(productService.createProduct(productDto));
     }
 
     @PutMapping()
-    public ResponseEntity<String> updateProduct(@Valid @RequestBody ProductDto productDto) {
-        productRepository.save(productMapper.fromDtoToEntity(productDto));
-        return ResponseEntity.ok().build();
+    public ResponseEntity<ProductDto> updateProduct(@Valid @RequestBody ProductDto productDto) {
+        return ResponseEntity.ok(productService.updateProduct(productDto));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteProduct(@PathVariable Long id) {
-        productRepository.deleteById(id);
+        productService.deleteProduct(id);
         return ResponseEntity.ok().build();
     }
 }
