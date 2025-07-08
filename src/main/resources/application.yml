@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: demo-app
+
+  # Configurazione Database relazionale (MySQL)
+  datasource:
+    url: jdbc:mysql://localhost:3306/demo_db
+    username: user
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update      # crea/aggiorna automaticamente lo schema
+    show-sql: true          # log SQL su console
+    properties:
+      hibernate:
+        format_sql: true
+
+  # Configurazione MongoDB
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: demo_mongo
+
+  # Parametri generali del web server
+  server:
+    port: 8080
+    servlet:
+      context-path: /api
+
+  # Livello di log (ROOT, org.springframework, com.tuo.pacchetto)
+  logging:
+    level:
+      root: INFO
+      org.springframework: WARN
+      com.pdfortunato: DEBUG
