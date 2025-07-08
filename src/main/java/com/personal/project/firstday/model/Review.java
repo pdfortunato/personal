@@ -1,7 +1,12 @@
 package com.personal.project.firstday.model;
 
+import jakarta.persistence.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document("reviews")
 public class Review {
 
+    @Id
     private String id;
     private String comment;
     private int rating;

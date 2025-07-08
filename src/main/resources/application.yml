@@ -4,7 +4,7 @@ spring:
 
   # Configurazione Database relazionale (MySQL)
   datasource:
-    url: jdbc:mysql://localhost:3306/demo_db
+    url: jdbc:mysql://localhost:3307/demo_db
     username: user
     password: password
     driver-class-name: com.mysql.cj.jdbc.Driver
