@@ -12,7 +12,7 @@ public class ProductDto {
 
     @NotNull(message = "Il prezzo è obbligatorio")
     @Min(value = 1, message = "Il prezzo deve essere almeno 1")
-    private Integer price;
+    private Double price;
 
     public ProductDto() {}
 
@@ -22,10 +22,17 @@ public class ProductDto {
     public void setName(String name) {
         this.name = name;
     }
-    public Integer getPrice() {
+    public Double getPrice() {
         return price;
     }
-    public void setPrice(Integer price) {
+    public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public long getId() {
+        return id;
+    }
+    public void setId(long id) {
+        this.id = id;
     }
 }
